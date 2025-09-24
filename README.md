@@ -13,9 +13,10 @@ O projeto coleta e analisa dados de futebol da Premier League de múltiplas font
 ```
 futebol-analysis/
 ├── dados_futebol/
-│   ├── premier league_fbref_schedule.csv      # Dados de partidas do FBref
-│   ├── premier league_understat_schedule.csv  # Dados de partidas do Understat
-│   └── premier league_understat_shots.csv     # Dados de eventos de chute (xG)
+│   ├── premier league_fbref_schedule.csv      # Dados de partidas do FBref (1.522 registros)
+│   ├── premier league_understat_schedule.csv  # Dados de partidas do Understat (1.522 registros)
+│   ├── premier league_understat_shots.csv     # Dados de eventos de chute (39.180 registros)
+│   └── sample_data.csv                        # Arquivo de exemplo com estrutura dos dados
 ├── anlise_dados.py                            # Script principal de análise
 ├── extrair_dados_pl.py                        # Script para extração de dados
 ├── ex.py                                      # Script de exemplo/teste
@@ -50,9 +51,25 @@ python anlise_dados.py
 
 ## 📈 Dados Incluídos
 
-- **Premier League FBref Schedule**: 1.522 registros de partidas
-- **Premier League Understat Schedule**: 1.522 registros de partidas
-- **Premier League Understat Shots**: 39.180 eventos de chute com dados de xG
+- **Premier League FBref Schedule**: 1.522 registros de partidas com estatísticas básicas
+- **Premier League Understat Schedule**: 1.522 registros de partidas com dados de xG
+- **Premier League Understat Shots**: 39.180 eventos de chute com dados detalhados de xG
+
+### Estrutura dos Dados
+
+Os arquivos CSV contêm as seguintes colunas principais:
+
+**Schedule (FBref/Understat):**
+- `season`, `week`, `day`, `date`, `time`
+- `home_team`, `away_team`
+- `home_xg`, `away_xg` (Expected Goals)
+- `score`, `attendance`, `venue`, `referee`
+
+**Shots (Understat):**
+- `match_id`, `minute`, `player`, `team`
+- `xG` (Expected Goals do chute)
+- `result` (Goal, Missed Shot, Saved Shot, etc.)
+- `situation`, `shotType`, `h_a`
 
 ## 🎯 Objetivos
 
@@ -84,3 +101,10 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull r
 ---
 
 **Nota**: Este projeto foi criado para análise de dados de futebol e desenvolvimento de estratégias de apostas baseadas em estatísticas avançadas.
+
+## 🔗 Links Úteis
+
+- [Repositório no GitHub](https://github.com/marcosweis/futebol-analysis)
+- [Documentação do SoccerData](https://soccerdata.readthedocs.io/)
+- [FBref - Estatísticas de Futebol](https://fbref.com/)
+- [Understat - Análise de xG](https://understat.com/)
